@@ -13,7 +13,14 @@ test('log.debug() prints correctly', function (t) {
 		log.debug('test_error');
 	});
 
-	t.equals(err[0], 'debug:{"code":"test_error"}\n');
+	const obj = JSON.parse(err[0]);
+
+	t.equals(obj._level, 'debug');
+	t.assert(obj._timestamp);
+	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._service, 'unknown');
+	t.equals(obj.code, 'test_error');
+	t.assert(!obj.stack);
 	t.end();
 });
 
@@ -22,16 +29,30 @@ test('log.info() prints correctly', function (t) {
 		log.info('test_error');
 	});
 
-	t.equals(err[0], 'info:{"code":"test_error"}\n');
+	const obj = JSON.parse(err[0]);
+
+	t.equals(obj._level, 'info');
+	t.assert(obj._timestamp);
+	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._service, 'unknown');
+	t.equals(obj.code, 'test_error');
+	t.assert(!obj.stack);
 	t.end();
 });
 
 test('log.warn() prints correctly', function (t) {
-	const err = tc.stderr.inspectSync(function () {
+	const err = tc.stdout.inspectSync(function () {
 		log.warn('test_error');
 	});
 
-	t.equals(err[0], 'warn:{"code":"test_error"}\n');
+	const obj = JSON.parse(err[0]);
+
+	t.equals(obj._level, 'warn');
+	t.assert(obj._timestamp);
+	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._service, 'unknown');
+	t.equals(obj.code, 'test_error');
+	t.assert(!obj.stack);
 	t.end();
 });
 
@@ -40,7 +61,14 @@ test('log.error() prints correctly', function (t) {
 		log.error('test_error');
 	});
 
-	t.equals(err[0], 'error:{"code":"test_error"}\n');
+	const obj = JSON.parse(err[0]);
+
+	t.equals(obj._level, 'error');
+	t.assert(obj._timestamp);
+	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._service, 'unknown');
+	t.equals(obj.code, 'test_error');
+	t.assert(obj.stack);
 	t.end();
 });
 
@@ -49,6 +77,15 @@ test('log prints JSON correctly', function (t) {
 		log.error('test_error', { a: 'b', c: 'd' });
 	});
 
-	t.equals(err[0], 'error:{"code":"test_error","meta":{"a":"b","c":"d"}}\n');
+	const obj = JSON.parse(err[0]);
+
+	t.equals(obj._level, 'error');
+	t.assert(obj._timestamp);
+	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._service, 'unknown');
+	t.equals(obj.code, 'test_error');
+	t.equals(obj.meta.a, 'b');
+	t.equals(obj.meta.c, 'd');
+	t.assert(obj.stack);
 	t.end();
 });
