@@ -9,7 +9,7 @@ const test = require('tape');
 log.setMinLogLevel('debug');
 
 test('log.debug() prints correctly', function (t) {
-	const err = tc.stdout.inspectSync(function () {
+	const err = tc.stderr.inspectSync(function () {
 		log.debug('test_error');
 	});
 
@@ -25,7 +25,7 @@ test('log.debug() prints correctly', function (t) {
 });
 
 test('log.info() prints correctly', function (t) {
-	const err = tc.stdout.inspectSync(function () {
+	const err = tc.stderr.inspectSync(function () {
 		log.info('test_error');
 	});
 
@@ -41,7 +41,7 @@ test('log.info() prints correctly', function (t) {
 });
 
 test('log.warn() prints correctly', function (t) {
-	const err = tc.stdout.inspectSync(function () {
+	const err = tc.stderr.inspectSync(function () {
 		log.warn('test_error');
 	});
 
