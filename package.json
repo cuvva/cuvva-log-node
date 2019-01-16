@@ -4,22 +4,17 @@
 	"description": "Super simple standardized logging used by all Cuvva systems",
 	"homepage": "https://github.com/cuvva/cuvva-log-node",
 	"bugs": "https://github.com/cuvva/cuvva-log-node/issues",
-
 	"license": "MIT",
 	"author": "Cuvva (https://cuvva.co)",
-
 	"main": "lib/index.js",
-
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/cuvva/cuvva-log-node.git"
 	},
-
 	"scripts": {
 		"test": "tape test/index.js",
 		"test-travis": "istanbul cover test/index.js --report lcovonly"
 	},
-
 	"devDependencies": {
 		"coveralls": "^2.11.2",
 		"istanbul": "^0.3.16",
