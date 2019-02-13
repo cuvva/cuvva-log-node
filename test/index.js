@@ -1,4 +1,4 @@
-GLOBAL.projRequire = function (module) {
+global.projRequire = function (module) {
 	return require('../' + module);
 };
 
