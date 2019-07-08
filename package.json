@@ -18,7 +18,7 @@
 	"devDependencies": {
 		"tape": "^4.11.0",
 		"coveralls": "^3.0.4",
-		"istanbul": "^0.4.5"
+		"istanbul": "^0.4.5",
 		"test-console": "^1.0.0"
 	}
 }
