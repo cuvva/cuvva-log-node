@@ -17,7 +17,7 @@ test('log.debug() prints correctly', function (t) {
 
 	t.equals(obj._level, 'debug');
 	t.assert(obj._timestamp);
-	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._commit_hash, 'dev');
 	t.equals(obj._service, 'unknown');
 	t.equals(obj.code, 'test_error');
 	t.assert(!obj.stack);
@@ -33,7 +33,7 @@ test('log.info() prints correctly', function (t) {
 
 	t.equals(obj._level, 'info');
 	t.assert(obj._timestamp);
-	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._commit_hash, 'dev');
 	t.equals(obj._service, 'unknown');
 	t.equals(obj.code, 'test_error');
 	t.assert(!obj.stack);
@@ -47,9 +47,9 @@ test('log.warn() prints correctly', function (t) {
 
 	const obj = JSON.parse(err[0]);
 
-	t.equals(obj._level, 'warn');
+	t.equals(obj._level, 'warning');
 	t.assert(obj._timestamp);
-	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._commit_hash, 'dev');
 	t.equals(obj._service, 'unknown');
 	t.equals(obj.code, 'test_error');
 	t.assert(!obj.stack);
@@ -65,7 +65,7 @@ test('log.error() prints correctly', function (t) {
 
 	t.equals(obj._level, 'error');
 	t.assert(obj._timestamp);
-	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._commit_hash, 'dev');
 	t.equals(obj._service, 'unknown');
 	t.equals(obj.code, 'test_error');
 	t.assert(obj.stack);
@@ -81,7 +81,7 @@ test('log prints JSON correctly', function (t) {
 
 	t.equals(obj._level, 'error');
 	t.assert(obj._timestamp);
-	t.equals(obj._git_commit, 'dev');
+	t.equals(obj._commit_hash, 'dev');
 	t.equals(obj._service, 'unknown');
 	t.equals(obj.code, 'test_error');
 	t.equals(obj.meta.a, 'b');
