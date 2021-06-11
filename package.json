@@ -19,6 +19,6 @@
 		"tape": "^5.0.0",
 		"coveralls": "^3.0.4",
 		"istanbul": "^0.4.5",
-		"test-console": "^1.0.0"
+		"test-console": "^2.0.0"
 	}
 }
